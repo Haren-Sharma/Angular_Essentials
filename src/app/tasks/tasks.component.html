@@ -1,0 +1,15 @@
+<div *ngIf="showAddTaskModal">
+  <app-new-task (cancel)="onCancelAddTask()"/>
+</div>
+<section id="tasks">
+  <header>
+    <h2>{{ name }}'s Tasks</h2>
+    <menu>
+      <button (click)="addTask()">Add task</button>
+    </menu>
+  </header>
+  <ul>
+    <li *ngFor="let task of selectedTasks">
+    </li>
+  </ul>
+</section>
