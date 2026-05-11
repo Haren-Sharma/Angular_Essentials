@@ -1,0 +1,11 @@
+<div>
+  <button
+    [ngClass]="selected ? { active: true } : { active: false }"
+    (click)="onSelectedUser()"
+  >
+    <!--Property interpolation-->
+    <img [src]="imagePath" [alt]="user.avatar" />
+    <!--String interpolation-->
+    <span>{{ user.name }}</span>
+  </button>
+</div>
