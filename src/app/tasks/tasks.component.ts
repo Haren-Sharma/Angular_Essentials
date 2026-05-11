@@ -2,7 +2,7 @@ import { Component, Input} from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { NgFor, NgIf } from "@angular/common";
 import { dummyTasks } from '../dummy.tasks';
-import { Task } from '../task/task.model';
+import { NewTask, Task } from '../task/task.model';
 import { NewTaskComponent } from "./new-task/new-task.component";
 
 @Component({
@@ -28,11 +28,22 @@ export class TasksComponent{
     this.tasks=this.tasks?.filter(task=>task.id!==id)
   }
   
-  addTask(){
+  showAddTask(){
     this.showAddTaskModal=true;    
   }
 
   onCancelAddTask(){
+    this.showAddTaskModal=false;
+  }
+
+  addTask(obj:NewTask){
+    this.tasks.unshift({
+      id:'t'+(this.tasks.length+1),
+      userId:this.id,
+      title:obj.title,
+      summary:obj.summary,
+      dueDate:obj.dueDate
+    })
     this.showAddTaskModal=false;
   }
 }
