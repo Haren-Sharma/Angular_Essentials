@@ -1,9 +1,9 @@
 import { Component, Input} from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { NgFor, NgIf } from "@angular/common";
-import { dummyTasks } from '../dummy.tasks';
-import { NewTask, Task } from './task/task.model';
+import { NewTask } from './task/task.model';
 import { NewTaskComponent } from "./new-task/new-task.component";
+import { TaskService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -15,17 +15,17 @@ import { NewTaskComponent } from "./new-task/new-task.component";
 export class TasksComponent{
   @Input({required:true}) id!:string;
   @Input({required:true}) name!:string;
+
+  constructor(private tasksService:TaskService){}
   
   showAddTaskModal=false;
-
-  tasks=[...dummyTasks];
   
   get selectedTasks(){
-    return this.tasks?.filter(task=>task.userId===this.id)
+    return this.tasksService.getUserTasks(this.id);
   }
   
   deleteTask(id:string){
-    this.tasks=this.tasks?.filter(task=>task.id!==id)
+    this.tasksService.deleteTask(id)
   }
   
   showAddTask(){
@@ -36,14 +36,8 @@ export class TasksComponent{
     this.showAddTaskModal=false;
   }
 
-  addTask(obj:NewTask){
-    this.tasks.unshift({
-      id:'t'+(this.tasks.length+1),
-      userId:this.id,
-      title:obj.title,
-      summary:obj.summary,
-      dueDate:obj.dueDate
-    })
+  addTask(obj:NewTask){   
+    this.tasksService.addTask(obj,this.id);
     this.showAddTaskModal=false;
   }
 }
