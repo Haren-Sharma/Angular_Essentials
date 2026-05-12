@@ -10,7 +10,7 @@ import { NewTask } from '../../task/task.model';
   styleUrl: './new-task.component.css'
 })
 export class NewTaskComponent {
-  @Output() cancel=new EventEmitter<void>()
+  @Output() cancel=new EventEmitter<void>();
   @Output() add=new EventEmitter<NewTask>();
 
   enteredTitle=''

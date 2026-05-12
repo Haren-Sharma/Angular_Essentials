@@ -1,4 +1,4 @@
-<div>
+<app-card>
   <button
     [ngClass]="selected ? { active: true } : { active: false }"
     (click)="onSelectedUser()"
@@ -8,4 +8,4 @@
     <!--String interpolation-->
     <span>{{ user.name }}</span>
   </button>
-</div>
+</app-card>
