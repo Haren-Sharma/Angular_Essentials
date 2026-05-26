@@ -7,8 +7,6 @@ import { TaskService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
-  standalone: true,
-  imports: [TaskComponent, NgFor, NgIf, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
