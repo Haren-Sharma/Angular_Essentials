@@ -1,5 +1,5 @@
 <div *ngIf="showAddTaskModal">
-  <app-new-task (cancel)="onCancelAddTask()" (add)="addTask($event)"/>
+  <app-new-task [userId]="id" (close)="onClose()"/>
 </div>
 <section id="tasks">
   <header>
@@ -10,7 +10,7 @@
   </header>
   <ul>
     <li *ngFor="let task of selectedTasks">
-      <app-task (completed)="deleteTask($event)" [task]="task"/>
+      <app-task [task]="task"/>
     </li>
   </ul>
 </section>

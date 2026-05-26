@@ -24,15 +24,11 @@ export class TasksComponent{
     return this.tasksService.getUserTasks(this.id);
   }
   
-  deleteTask(id:string){
-    this.tasksService.deleteTask(id)
-  }
-  
   showAddTask(){
     this.showAddTaskModal=true;    
   }
 
-  onCancelAddTask(){
+  onClose(){
     this.showAddTaskModal=false;
   }
 
