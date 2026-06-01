@@ -12,7 +12,7 @@ import { TasksModule } from './tasks/tasks.module';
     AppComponent,
     HeaderComponent,
     UserComponent,
-  ], // here we declare all the module-based components that we are going to use
+  ], // components/directives/pipes that belong to and are owned by this module
   bootstrap: [AppComponent], // first component that will be bootstraped
   imports: [BrowserModule,SharedModule,RouterOutlet,TasksModule], // NgModules (and standalone components/directives/pipes) to make available in this module
 })
